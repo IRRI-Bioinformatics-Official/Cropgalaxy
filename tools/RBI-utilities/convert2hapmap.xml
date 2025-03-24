@@ -1,0 +1,42 @@
+<tool id="convert2hapmap" name="Convert to Hapmap" version="v.01">
+   <description>Convert 1K RiCA Agriplex or DArT genotyping data to hapmap</description>
+   <requirements>
+        <requirement type="package">python3</requirement>
+        <requirement type="package">pandas</requirement>
+   </requirements>
+   <command><![CDATA[
+	   python3 $__tool_directory__/convert2hapmap.py $input_type $input_file $output_file
+	   ]]>
+   </command>
+  
+   <inputs>
+	<param name="input_file" type="data" format="xlsx,csv" label="Genotype Input File"/>
+	<param name="input_type" type="select" label="Select genotype data format" help="currently accepts: 1K RiCA or DArT tabular data">
+        	<option value="1">1K RiCA genotype data</option>
+                <option value="2">DArT genotype data</option>
+	</param>
+  </inputs>
+ 
+  <outputs>
+    <data format="tabular" name="output_file" label="Hapmap File Output" />
+  </outputs>
+
+  <tests>
+	<test>
+	</test>
+  </tests>
+
+  <help>
+
+.. class:: infomark
+
+** Convert to Hapmap - what it does**
+	  
+This tool converts genotype data from 1kRiCA (AgriPlex) or DaRT into HapMap format.
+        
+       - **1kRiCA (AgriPlex)**: Requires an Excel file (.xlsx).
+       - **DaRT**: Requires a CSV file (.csv).
+        
+**Output Format:** A HapMap-formatted TSV file. 
+   </help>
+</tool>
