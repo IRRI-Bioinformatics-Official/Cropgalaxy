@@ -1,0 +1,33 @@
+<tool id="gapit_gwas" name="GAPIT GWAS" version="1.1.0">
+    <description>Run GWAS using GAPIT (BLINK or FarmCPU)</description>
+    <requirements>
+        <requirement type="package">R</requirement>
+    </requirements>
+
+    <command detect_errors="exit_code">
+	    Rscript $__tool_directory__/GAPIT/run_gapit.R '$genotype' '$phenotype' '$gwas_method' '$output_dir'
+    </command>
+
+    <inputs>
+        <param name="genotype" type="data" format="tabular" label="Genotype file" />
+        <param name="phenotype" type="data" format="tabular" label="Phenotype file" />
+        <param name="gwas_method" type="select" label="GWAS Method">
+            <option value="BLINK">BLINK</option>
+            <option value="FarmCPU">FarmCPU</option>
+        </param>
+    </inputs>
+
+    <outputs>
+        <collection name="gapit_results" type="list" label="GAPIT Output">
+            <discover_datasets pattern=".*" directory="results" visible="true"/>
+        </collection>
+    </outputs>
+
+    <help>
+        This tool runs Genome-Wide Association Studies (GWAS) using the GAPIT package in R.
+        
+        - Supported methods: BLINK and FarmCPU
+        - Input phenotype and genotype files must follow GAPIT format
+    </help>
+</tool>
+

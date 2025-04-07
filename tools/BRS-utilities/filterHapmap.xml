@@ -1,0 +1,36 @@
+<tool id="filterhapmap" name="Hapmap Filter" version="v.01">
+   <description> and convert to IUPAC genotype codes</description>
+   <requirements>
+        <requirement type="package">python3</requirement>
+        <requirement type="package">pandas</requirement>
+        <requirement type="package">sys</requirement>
+   </requirements>
+   <command><![CDATA[
+	   python3 $__tool_directory__/filterBiAllelicHapmap.py $input_file $output_file
+	   ]]>
+   </command>
+  
+   <inputs>
+	<param name="input_file" type="data" format="csv" label="Hapmap File"/>
+  </inputs>
+ 
+  <outputs>
+	  <data format="tabular" name="output_file" label="Filtering on ${on_string}" />
+  </outputs>
+
+  <tests>
+	<test>
+	</test>
+  </tests>
+
+  <help>
+
+.. class:: infomark
+
+** Hapmap Filter - what it does**
+	  
+	  This tool removes non-biallelic markers from an input HapMap file generated from AgriPlex/DaRT-converted genotype data. It also converts the genotype into IUPAC codes (https://www.bioinformatics.org/sms/iupac.html) used in TASSEL software (https://www.maizegenetics.net/tassel).
+         
+**Output Format:** A HapMap-formatted TSV file. 
+   </help>
+</tool>
